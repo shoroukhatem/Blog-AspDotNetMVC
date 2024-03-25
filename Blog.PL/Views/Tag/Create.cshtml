@@ -1,0 +1,25 @@
+﻿@model TagViewModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+<form class="row g-3" asp-controller="Tag" asp-action="Create">
+    @Html.ValidationSummary(true,"",new {@class="text-danger"})
+  <div class="col-md-4">
+        <label asp-for="@Model.Name" for="validationDefault02" class="form-label">Name</label>
+        <input type="text" asp-for="@Model.Name"  class="form-control" id="validationDefault02" required>
+        <span asp-validation-for="@Model.Name" class="text-danger"></span>
+  </div>
+  
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Add</button>
+        <a asp-action="Index" class="btn btn-light"> Back To List</a>
+  </div>
+  
+</form>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+

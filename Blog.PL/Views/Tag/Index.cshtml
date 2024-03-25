@@ -1,0 +1,56 @@
+﻿@model IEnumerable<TagViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<a asp-action="Create" class="btn btn-primary">Create New Tag</a>
+<br />
+<br />
+@if (Model?.Count() > 0)
+{
+<ul class="list-group" asp-controller="Tag" asp-action="Index">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+      
+                    <th>@Html.DisplayNameFor(x=>x.Name) </th>
+              
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+ 
+                        <td>@item.Name</td>
+                        
+                        <td>
+                            <a class="btn btn-warning" asp-controller="Tag" asp-action="Update" asp-route-id="@item.Id">
+                                <i class="fas fa-edit"></i> Update
+                            </a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" asp-controller="Tag" asp-action="Delete" asp-route-id="@item.Id">
+                                <i class="fas fa-edit"></i> Delete
+                            </a>
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </ul>
+
+}
+else
+{
+    <div class="alert alert-warning">
+        <h3>No Tags Found!!</h3>
+    </div>
+}
+

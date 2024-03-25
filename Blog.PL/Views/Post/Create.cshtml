@@ -1,0 +1,51 @@
+﻿@using Blog.PL.Models.PostViewModels;
+
+@{
+    ViewData["Title"] = "Create";
+}
+@model PostCreateViewModel
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Post</title>
+    <link rel="stylesheet" href="/css/CreateStyle.css">
+</head>
+<body>
+
+    <div class="container">
+    <h2>Create New Post</h2>
+        <form asp-controller="Post" asp-action="Create" class="post-form" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+            <label for="title">Title</label>
+            <input asp-for="@Model.Title" type="text" id="title" name="title" required>
+            <span asp-validation-for="@Model.Body"></span>
+            </div>
+            <div class="form-group">
+            <label for="body">Body</label>
+            <textarea asp-for="@Model.Body" id="body" name="body" rows="8" required></textarea>
+            <span asp-validation-for="@Model.Body"></span>
+            </div>
+            <div class="form-group">
+            <label for="image">Upload Image</label>
+            <input type="file" id="image" name="image" asp-for="@Model.Image" accept="image/*" required>
+             <span asp-validation-for="@Model.Image"></span>
+            </div>
+            <div class="form-group">
+            <label asp-for="@Model.SelectedTags" class="form-label"></label>
+            <select asp-for="SelectedTags" asp-items="Model.Tags" multiple>
+                <option></option>
+            </select>
+            <span asp-validation-for="SelectedTags"></span>
+            </div>
+            <div class="form-group">
+            <label asp-for="@Model.Pinned">Pin</label>
+            <input type="checkbox" asp-for="@Model.Pinned" id="pinned" name="pinned">
+            <div/>
+       
+        <button type="submit">Add</button>
+    </form>
+</div>
+</body>

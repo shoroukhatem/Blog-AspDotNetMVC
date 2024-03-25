@@ -1,0 +1,38 @@
+﻿@using Blog.PL.Models.PostViewModels;
+@model PostViewModel
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="post-form">
+    <h2>Create New Post</h2>
+    <form asp-controller="Post" asp-action="Update" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="@Model.Title">Title</label>
+            <input asp-for="@Model.Title" type="text" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Body">Body</label>
+            <textarea asp-for="@Model.Body" id="body" name="body" rows="8" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="image">Upload Image</label>
+            <input type="file" id="image" name="image" asp-for="@Model.Image" accept="image/*" >
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.SelectedTags" class="form-label"></label>
+            <select for="selected" id="selected" asp-for="@Model.SelectedTags" asp-items="@Model.Tags" multiple>
+                <option ></option>
+            </select>
+            <span asp-validation-for="SelectedTags"></span> 
+        </div>
+        <br />
+        <div class="form-group">
+            <label asp-for="@Model.Pinned" for="pinned">Pin</label>
+            <input type="checkbox" asp-for="@Model.Pinned" id="pinned" name="pinned">
+        </div>
+        <button type="submit">Add</button>
+    </form>
+</div>
+

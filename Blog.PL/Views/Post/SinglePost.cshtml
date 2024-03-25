@@ -1,0 +1,16 @@
+﻿@model PostTagViewModel
+@{
+    ViewData["Title"] = "SinglePost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div asp-controller="" class="post">
+    <a asp-controller="Post" asp-action="SinglePost" class="post-title">@Model.Title</a>
+    <div class="post-content">
+        <p>@Model.Body</p>
+        <img src="~/Files/Images/@Model.imageURL" alt="Image Description">
+
+    </div>
+</div>
+
+

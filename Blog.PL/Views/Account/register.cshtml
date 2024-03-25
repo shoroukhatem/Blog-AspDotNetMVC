@@ -1,0 +1,54 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "register";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<form asp-controller="Account" asp-action="register" method="post">
+    @Html.ValidationSummary(true,"",new {@class="text-danger"})
+    <div class="row gy-2 overflow-hidden">
+        <div class="col-12">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" asp-for="@Model.Name" name="Name" id="Name" placeholder="Name" required="">
+                <label asp-for="@Model.Name" class="form-label">Name</label>
+            </div>
+        </div>
+       
+        <div class="col-12">
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" asp-for="@Model.Password" name="password" id="password" value="" placeholder="Password" required="">
+                <label asp-for="@Model.Password" class="form-label">Password</label>
+            </div>
+        </div>
+        
+        <div class="col-12">
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" asp-for="@Model.ConfirmPassword" name="Confirmpassword" id="Confirmpassword" value="" placeholder="Confirm Password" required="">
+                <label asp-for="@Model.ConfirmPassword" class="form-label">Confirm Password</label>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-floating mb-3">
+                <input type="tel" class="form-control" asp-for="@Model.PhoneNumber" id="PhoneNumber" name="PhoneNumber" pattern="^01[0-2]\d{1,8}$" required="">
+                <label asp-for="@Model.PhoneNumber" class="form-label">phone number</label>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" name="iAgree" id="iAgree" required>
+                <label class="form-check-label text-secondary" for="iAgree">
+                    I agree to the terms and conditions</a>
+                </label>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="d-grid my-3">
+                <button class="btn btn-primary btn-lg" type="submit">Register</button>
+            </div>
+        </div>
+        <div class="col-12">
+            <p class="m-0 text-secondary text-center">Already have an account? <a asp-action="Login" class="link-primary text-decoration-none">Login</a></p>
+        </div>
+    </div>
+</form>
+
